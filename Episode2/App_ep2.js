@@ -1,3 +1,6 @@
+import React from "react";
+import ReactDOM from "react-dom/client";
+
 // createElement( the tag which we want, place where we give attributes to the tag, what we want to put in the tag)
 const headingReact = React.createElement(
   "h1",
@@ -15,15 +18,15 @@ rootReact.render(headingReact);
 
 // Multi level structure
 /*
-   *
+   
       <div id="parent">
           <div id="child">
               <h1>Heading</h1>
               <h2>Sibling</h2>
           </div>
       </div>
-   * 
-   */
+    
+*/
 
 const parent = React.createElement("div", { id: "parent" }, [
   React.createElement("div", { id: "child" }, [
@@ -36,7 +39,6 @@ const parent = React.createElement("div", { id: "parent" }, [
   ]),
   React.createElement("span", { id: "span1" }, [
     React.createElement("p", {}, "Some random Paragraph"),
-    React.createElement("span", { id: "span2" }, "Span2"),
   ]),
   React.createElement("div", { id: "div3" }, "Yoooo"),
 ]);
