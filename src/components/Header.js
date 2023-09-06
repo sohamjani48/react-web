@@ -3,13 +3,18 @@ import { LOGO_URL } from "../utils/consts";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import UserContext from "../utils/UserContext";
+import { useSelector } from "react-redux";
 
 const Header = () => {
   const [btnText, setBtnText] = useState("Login");
 
   const onlineStatus = useOnlineStatus();
 
-  const { loggedInUser } = useContext(UserContext);
+  const { loggedInUser, setUsername } = useContext(UserContext);
+
+  //Subscribing to the storee using Selector
+  const cartItems = useSelector((store) => store.cart.items);
+  console.log(cartItems);
 
   return (
     <div className="flex justify-between shadow-lg my-4 bg-orange-100 mx-2 rounded-md sm:bg-peach-200">
@@ -41,12 +46,21 @@ const Header = () => {
               Grocery
             </Link>
           </li>
-          <li className="px-4 py-2 hover:bg-red-200 rounded-lg">Cart</li>
+
+          <li className="px-4 py-2 hover:bg-red-200 rounded-lg">
+            <Link to={"/cart"} style={{ textDecoration: "none" }}>
+              {cartItems.length ? `Cart (${cartItems.length})` : "Cart"}
+            </Link>
+          </li>
 
           <button
             className="px-2 mx-4 bg-orange-800 text-white rounded-xl hover:shadow-xl"
             onClick={() => {
-              setBtnText(btnText === "Login" ? "LogOut" : "Login");
+              btnText === "Login";
+              if (btnText === "Login") {
+                setUsername("Soham Jani");
+                setBtnText("LogOut");
+              }
             }}
           >
             {btnText}

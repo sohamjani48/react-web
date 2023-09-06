@@ -10,6 +10,9 @@ import {
 } from "react-router-dom";
 import Error from "./components/Error";
 import UserContext from "./utils/UserContext";
+import { Provider } from "react-redux";
+import appStore from "./utils/appStore";
+import Cart from "./components/Cart";
 
 const rootReact = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -27,18 +30,20 @@ const AppLayout = () => {
   //authentication
   useEffect(() => {
     // Make API call and send username and password
-    const data = { name: "Soham Jani" };
+    const data = { name: "Guest User" };
 
     setUsername(data.name);
   }, []);
 
   return (
-    <UserContext.Provider value={{ loggedInUser: username, setUsername }}>
-      <div className="app">
-        <Header />
-        <Outlet />
-      </div>
-    </UserContext.Provider>
+    <Provider store={appStore}>
+      <UserContext.Provider value={{ loggedInUser: username, setUsername }}>
+        <div className="app">
+          <Header />
+          <Outlet />
+        </div>
+      </UserContext.Provider>
+    </Provider>
   );
 };
 
@@ -82,6 +87,10 @@ const appRouter = createBrowserRouter([
             <Grocery />
           </Suspense>
         ),
+      },
+      {
+        path: "/cart",
+        element: <Cart />,
       },
     ],
     errorElement: <Error />,

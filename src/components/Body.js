@@ -57,7 +57,7 @@ const Body = () => {
         <div className="m-4">
           <input
             type="text"
-            className="mx-2 border border-solid border-black rounded-lgs"
+            className="mx-2 px-2 border border-solid border-black rounded-md"
             value={searchText}
             onChange={(event) => {
               setSearchText(event.target.value);
@@ -90,15 +90,6 @@ const Body = () => {
           >
             Top Rated Restaurants
           </button>
-        </div>
-        <div className="mx-2">
-          <input
-            className=" p-1 border border-black"
-            value={loggedInUser}
-            onChange={(event) => {
-              setUsername(event.target.value);
-            }}
-          />
         </div>
       </div>
       <div className="flex flex-wrap">
