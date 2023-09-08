@@ -16,7 +16,10 @@ const ItemList = ({ items }) => {
         const { id, name, description, price, defaultPrice, isVeg, imageId } =
           item.card.info;
         return (
-          <div className="border-black border-b-2 my-2 p-2">
+          <div
+            className="border-black border-b-2 my-2 p-2"
+            data-testid="menuItem"
+          >
             <div className="flex justify-between">
               <span>
                 <span>

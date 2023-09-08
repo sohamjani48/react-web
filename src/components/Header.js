@@ -49,7 +49,7 @@ const Header = () => {
 
           <li className="px-4 py-2 hover:bg-red-200 rounded-lg">
             <Link to={"/cart"} style={{ textDecoration: "none" }}>
-              {cartItems.length ? `Cart (${cartItems.length})` : "Cart"}
+              {`Cart (${cartItems.length})`}
             </Link>
           </li>
 
@@ -58,8 +58,11 @@ const Header = () => {
             onClick={() => {
               btnText === "Login";
               if (btnText === "Login") {
-                setUsername("Soham Jani");
-                setBtnText("LogOut");
+                // setUsername("Soham Jani");
+                setBtnText("Logout");
+              } else {
+                // setUsername("Guest User");
+                setBtnText("Login");
               }
             }}
           >

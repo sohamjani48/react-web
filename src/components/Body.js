@@ -4,7 +4,6 @@ import { SWIGGY_URL } from "../utils/consts";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
-import NoInternet from "../resources/images/noInternet.png";
 import UserContext from "../utils/UserContext";
 
 const Body = () => {
@@ -59,6 +58,7 @@ const Body = () => {
             type="text"
             className="mx-2 px-2 border border-solid border-black rounded-md"
             value={searchText}
+            data-testid="searchInput"
             onChange={(event) => {
               setSearchText(event.target.value);
               if (event.target.value.length < 1) {
